@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0" vc:maxVersion="1.1">
+    <xs:simpleType name="Gender">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="MALE"/>
+            <xs:enumeration value="FEMALE"/>
+            <xs:enumeration value="OTHER"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    <xs:element name="Root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Actors">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Actor" minOccurs="1" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:attribute name="id" type="xs:integer" use="required"/>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                    <xs:attribute name="gender" type="Gender" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Serieses">
+                    <xs:complexType>
+                        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="Series">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Season" minOccurs="1" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Episode" minOccurs="1" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="ActorRefKey" minOccurs="0" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:attribute name="refKey" type="xs:integer"
+                                                                                      use="required"/>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="title" type="xs:string" use="required"/>
+                                                            <xs:attribute name="duration" type="xs:integer"
+                                                                          use="required"/>
+                                                            <xs:attribute name="airTime" type="xs:dateTime"
+                                                                          use="required"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="title" type="xs:string" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="title" type="xs:string" use="required"/>
+                                    <xs:attribute name="rating" type="xs:integer" use="required"/>
+                                    <xs:attribute name="duration" type="xs:integer" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:key name="actorKey">
+            <xs:selector xpath="Actor"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+        <xs:keyref refer="actorKey" name="actorRefKey">
+            <xs:selector xpath="ActorRefKey"/>
+            <xs:field xpath="@refKey"/>
+        </xs:keyref>
+    </xs:element>
+</xs:schema>
