@@ -3,6 +3,7 @@ package com.github.dugasz1.seriesbase.web.config;
 import com.github.dugasz1.seriesbase.controller.ActorController;
 import com.github.dugasz1.seriesbase.core.services.ActorService;
 import com.github.dugasz1.seriesbase.dao.ActorXmlDAO;
+import com.github.dugasz1.seriesbase.dao.XmlDb;
 import com.github.dugasz1.seriesbase.service.dao.ActorDAO;
 import com.github.dugasz1.seriesbase.service.impl.ActorServiceImpl;
 import org.springframework.context.annotation.Bean;
@@ -11,9 +12,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebConfig {
 
+    @Bean(value = "xmlDb")
+    public XmlDb initXmlDb() {
+        try {
+            return new XmlDb("C:\\Users\\Dudu\\Desktop\\db_test.xml");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @Bean(value = "actorDAO")
     public ActorDAO initActorDAO(){
-        return new ActorXmlDAO();
+        return new ActorXmlDAO(initXmlDb());
     }
 
     @Bean(value = "actorService")
