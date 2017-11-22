@@ -20,7 +20,7 @@ public class ActorController {
         this.actorService = actorService;
     }
 
-    @RequestMapping(value = "/get/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/get", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Collection<Actor> listAllActor(){
         return actorService.listActors();

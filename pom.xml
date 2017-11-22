@@ -22,6 +22,10 @@
         <junit.version>4.12</junit.version>
         <spring.version>4.3.9.RELEASE</spring.version>
         <jackson.version>2.9.0.pr4</jackson.version>
+        <maven.surefire.plugin.version>2.12.4</maven.surefire.plugin.version>
+
+        <xml.db.schema>C:\Users\Dudu\IdeaProjects\SeriesBase\daoXml\src\main\resources\db_schema.xsd</xml.db.schema>
+        <xml.db.path>C:\Users\Dudu\Desktop\db_test.xml</xml.db.path>
     </properties>
 
 </project>
