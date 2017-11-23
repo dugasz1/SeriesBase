@@ -14,6 +14,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!--App dependencies-->
         <dependency>
             <groupId>com.github.dugasz1.seriesbase</groupId>
             <artifactId>core</artifactId>

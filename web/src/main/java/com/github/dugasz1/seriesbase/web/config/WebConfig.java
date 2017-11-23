@@ -14,12 +14,7 @@ public class WebConfig {
 
     @Bean(value = "xmlDb")
     public XmlDb initXmlDb() {
-        try {
-            return new XmlDb("C:\\Users\\Dudu\\Desktop\\db_test.xml");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+        return new XmlDb("C:\\Users\\Dudu\\Desktop\\db_test.xml");
     }
 
     @Bean(value = "actorDAO")

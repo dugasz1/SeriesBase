@@ -2,17 +2,18 @@ package com.github.dugasz1.seriesbase.core.services;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
 
+import java.text.ParseException;
 import java.util.Collection;
 
 public interface ActorService {
-    Collection<Actor> listActors();
+    Collection<Actor> listActors() throws ParseException;
 
     /**
      * Search actor
      * @param name Full name or part of him/her name. Not case sensitive.
      * @return
      */
-    Actor searchActorByName(String name);
+    Collection<Actor> searchActorByName(String name) throws ParseException;
 
     void recordActor(Actor actor);
 }

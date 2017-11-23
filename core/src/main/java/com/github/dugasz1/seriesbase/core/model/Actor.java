@@ -1,17 +1,13 @@
 package com.github.dugasz1.seriesbase.core.model;
 
-import java.util.Date;
-
 public class Actor {
     private int id;
     private String name;
-    private Date birth;
     private Gender gender;
 
-    public Actor(int id, String name, Date birth, Gender gender) {
+    public Actor(int id, String name, Gender gender) {
         setId(id);
         setName(name);
-        setBirth(birth);
         setGender(gender);
     }
 
@@ -31,13 +27,6 @@ public class Actor {
         this.name = name;
     }
 
-    public Date getBirth() {
-        return birth;
-    }
-
-    public void setBirth(Date birth) {
-        this.birth = birth;
-    }
 
     public Gender getGender() {
         return gender;

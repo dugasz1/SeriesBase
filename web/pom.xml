@@ -11,6 +11,7 @@
     <name>SeriesBase</name>
     <url>http://maven.apache.org</url>
     <dependencies>
+        <!--3d party dependencies-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -19,21 +20,23 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.dugasz1.seriesbase</groupId>
-            <artifactId>controller</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.dugasz1.seriesbase</groupId>
-            <artifactId>daoXml</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!--App dependencies-->
+        <dependency>
+            <groupId>com.github.dugasz1.seriesbase</groupId>
+            <artifactId>controller</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.dugasz1.seriesbase</groupId>
+            <artifactId>daoXml</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
