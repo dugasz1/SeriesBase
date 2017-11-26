@@ -70,6 +70,18 @@ hr {
     height: 1px;
 }
 
+table {
+    font-family: inherit;
+    border: 2px solid #008fff;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+
+tr:nth-child(even){
+    background: #0068c7;
+}
+
 .menu{
     list-style: none;
     display: block;

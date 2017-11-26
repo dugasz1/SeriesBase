@@ -8,7 +8,9 @@ import java.util.Collection;
 public interface EpisodeService {
     Collection<Episode> listEpisodeBySeason(Season season);
 
-    void recordEpisode(Episode episode);
+    void recordEpisode(int seriesId, int seasonId, Episode episode);
+
+
 
     /**
      * Check is two episode have overlap in their airtime.

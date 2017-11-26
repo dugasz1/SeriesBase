@@ -1,17 +1,15 @@
 package com.github.dugasz1.seriesbase.controller;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
-import com.github.dugasz1.seriesbase.core.model.Gender;
 import com.github.dugasz1.seriesbase.core.services.ActorService;
+import com.github.dugasz1.seriesbase.core.services.exceptions.ActorExistException;
+import com.github.dugasz1.seriesbase.core.services.exceptions.StorageErrorException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.Collection;
-import java.util.Date;
 
 @RequestMapping("/actor")
 public class ActorController {
@@ -38,11 +36,26 @@ public class ActorController {
         return actorService.searchActorByName(actorName);
     }
 
-    @RequestMapping(value = "/add/{actorName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/add/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public Actor addActor(@PathVariable(value = "actorName") String actorName) {
-        Actor actor = new Actor(10, actorName, Gender.FEMALE);
+    public Actor addActor(@RequestBody Actor actor) throws StorageErrorException, ActorExistException {
+        //Actor actor = new Actor(10, actorName, Gender.FEMALE);
+        System.out.println(actor.toString());
         actorService.recordActor(actor);
         return actor;
+    }
+
+    @ExceptionHandler(value = {StorageErrorException.class, ActorExistException.class, org.springframework.http.converter.HttpMessageConversionException.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String addActorExceptionHandler(Exception e){
+        return e.getMessage();
+    }
+
+    @ExceptionHandler(value = {org.springframework.http.converter.HttpMessageConversionException.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String httpMessageConversionHandler() {
+        return "Can not convert the given value.";
     }
 }

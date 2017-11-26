@@ -8,8 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav>
     <ul class="menu">
-        <li><a href="#"><span><i class="fa fa-home" aria-hidden="true">&nbsp; Kezdőlap</i></span></a></li>
-        <li><a href="#"><span><i class="fa fa-address-book" aria-hidden="true">&nbsp; Menu 1</i></span></a></li>
-        <li><a href="#"><span><i class="fa fa-film" aria-hidden="true">&nbsp; Menu 2</i></span></a></li>
+        <li><a href="index.jsp"><span><i class="fa fa-home" aria-hidden="true">&nbsp; Kezdőlap</i></span></a></li>
+        <li><a href="actors.jsp"><span><i class="fa fa-address-book" aria-hidden="true">&nbsp; Menu 1</i></span></a></li>
+        <li><a href="series.jsp"><span><i class="fa fa-film" aria-hidden="true">&nbsp; Menu 2</i></span></a></li>
     </ul>
 </nav>

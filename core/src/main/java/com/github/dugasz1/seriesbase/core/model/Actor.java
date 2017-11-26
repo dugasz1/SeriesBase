@@ -5,11 +5,17 @@ public class Actor {
     private String name;
     private Gender gender;
 
+
+    public Actor() {
+
+    }
+
     public Actor(int id, String name, Gender gender) {
         setId(id);
         setName(name);
         setGender(gender);
     }
+
 
     public int getId() {
         return id;
@@ -34,5 +40,10 @@ public class Actor {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString(){
+        return id + " | " + name + " | " + gender.toString();
     }
 }

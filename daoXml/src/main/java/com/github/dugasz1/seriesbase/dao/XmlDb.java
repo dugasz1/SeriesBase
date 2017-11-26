@@ -1,6 +1,9 @@
 package com.github.dugasz1.seriesbase.dao;
 
+import com.github.dugasz1.seriesbase.dao.exceptions.UnableToSaveException;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
@@ -25,6 +28,9 @@ public class XmlDb {
     private File schemaFile;
     private Schema schema;
     private Document document;
+
+    private Node actorAINode;
+    private Node seriesAINode;
 
     public XmlDb (String dbPath){
         dbFile = new File(dbPath);
@@ -62,16 +68,41 @@ public class XmlDb {
             e.printStackTrace();
         }
 
+        Element root = document.getDocumentElement();
+        actorAINode = root.getElementsByTagName("ActorAI").item(0).getFirstChild();
+        seriesAINode = root.getElementsByTagName("SeriesAI").item(0).getFirstChild();
     }
 
-    public void Save() throws IOException, TransformerException {
+    public int GetNewActorId(){
+        String value = actorAINode.getNodeValue();
+        int valueInt = Integer.valueOf(value);
+        valueInt++;
+        actorAINode.setNodeValue(String.valueOf(valueInt));
+        return valueInt;
+    }
+
+    public int GetNewSeriesId(){
+        String value = seriesAINode.getNodeValue();
+        int valueInt = Integer.valueOf(value);
+        valueInt++;
+        seriesAINode.setNodeValue(String.valueOf(valueInt));
+        return valueInt;
+    }
+
+    public void Save() throws UnableToSaveException {
         DOMSource source = new DOMSource(document);
-        FileWriter writer = new FileWriter(dbFile);
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(dbFile);
+
         StreamResult result = new StreamResult(writer);
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
         transformer.transform(source, result);
+        } catch (Exception e) {
+            throw new UnableToSaveException(e);
+        }
     }
 
     public Document getDocument() {

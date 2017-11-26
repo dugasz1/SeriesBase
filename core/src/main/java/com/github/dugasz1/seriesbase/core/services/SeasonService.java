@@ -8,5 +8,7 @@ import java.util.Collection;
 public interface SeasonService {
     Collection<Season> listSeasonsBySeries(Series series);
 
-    void recordSeason(Season season);
+    Season getSeason(int seriesId, int seasonId);
+
+    void recordSeason(int seriesId, Season season);
 }

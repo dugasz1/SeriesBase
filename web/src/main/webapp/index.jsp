@@ -25,6 +25,10 @@
             <button type="button" id="searchButton">Keresés</button>
         </form>
 
+        <table id="actorSeachResult" border="1">
+
+        </table>
+
         <span class="hr-line" />
 
         <form>

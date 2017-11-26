@@ -2,7 +2,10 @@ package com.github.dugasz1.seriesbase.service.impl;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
 import com.github.dugasz1.seriesbase.core.services.ActorService;
+import com.github.dugasz1.seriesbase.core.services.exceptions.ActorExistException;
+import com.github.dugasz1.seriesbase.core.services.exceptions.StorageErrorException;
 import com.github.dugasz1.seriesbase.service.dao.ActorDAO;
+import com.github.dugasz1.seriesbase.service.dao.exceptions.PersistException;
 
 import javax.xml.transform.TransformerException;
 import java.io.IOException;
@@ -17,11 +20,11 @@ public class ActorServiceImpl implements ActorService {
         this.actorDAO = actorDAO;
     }
 
-    public Collection<Actor> listActors() throws ParseException {
+    public Collection<Actor> listActors() {
         return actorDAO.readActors();
     }
 
-    public Collection<Actor> searchActorByName(String name) throws ParseException {
+    public Collection<Actor> searchActorByName(String name) {
         Collection<Actor> actors = actorDAO.readActors();
         Collection<Actor> result = new ArrayList<Actor>();
         for (Actor actor : actors) {
@@ -32,13 +35,18 @@ public class ActorServiceImpl implements ActorService {
         return result;
     }
 
-    public void recordActor(Actor actor) {
+    public void recordActor(Actor actor) throws StorageErrorException, ActorExistException {
+        Collection<Actor> actors = listActors();
+        for (Actor currActor: actors) {
+            if(currActor.getName().equals(actor.getName())){
+                throw new ActorExistException(actor.getName() + " is already exist.");
+            }
+        }
+
         try {
             actorDAO.createActor(actor);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
+        } catch (PersistException e) {
+            throw new StorageErrorException(e);
         }
     }
 }

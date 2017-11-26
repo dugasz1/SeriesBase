@@ -2,7 +2,9 @@ package com.github.dugasz1.seriesbase.dao;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
 import com.github.dugasz1.seriesbase.core.model.Gender;
+import com.github.dugasz1.seriesbase.dao.exceptions.UnableToSaveException;
 import com.github.dugasz1.seriesbase.service.dao.ActorDAO;
+import com.github.dugasz1.seriesbase.service.dao.exceptions.PersistException;
 import org.w3c.dom.*;
 
 import javax.xml.transform.TransformerException;
@@ -32,15 +34,19 @@ public class ActorXmlDAO implements ActorDAO {
 
     }
 
-    public void createActor(Actor actor) throws IOException, TransformerException {
+    public void createActor(Actor actor) throws PersistException {
         Element newActor = document.createElement("Actor");
-        newActor.setAttribute("id", String.valueOf(123));
+        newActor.setAttribute("id", String.valueOf(xmlDb.GetNewActorId()));
         newActor.setAttribute("name", actor.getName());
         newActor.setAttribute("gender", actor.getGender().toString());
 
         actorsNode.appendChild(newActor);
 
-        xmlDb.Save();
+        try {
+            xmlDb.Save();
+        } catch (UnableToSaveException e) {
+            throw new PersistException("Storage fail - Can not store new actor", e);
+        }
     }
 
     public Collection<Actor> readActors() {

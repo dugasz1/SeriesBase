@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 
 public class Episode {
+    //This id is only unique in the season
     private int id;
     private String title;
     private int duration;
