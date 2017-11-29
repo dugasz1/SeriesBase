@@ -12,7 +12,6 @@
         <module>service</module>
         <module>web</module>
         <module>controller</module>
-        <module>daoxml</module>
         <module>daoXml</module>
     </modules>
 

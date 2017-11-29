@@ -19,7 +19,7 @@
 <body>
     <%@include file="includes/menu.jsp"%>
     <div class="content">
-        <form>
+        <form id="searchForm">
             <label>Adja meg a színész nevét: </label>
             <input type="text" id="searchName" />
             <button type="button" id="searchButton">Keresés</button>
@@ -31,11 +31,9 @@
 
         <span class="hr-line" />
 
-        <form>
+        <form >
             <label>Adja meg a színész nevét: </label>
-            <input type="text" />
-            <label>Adja meg a születési évét: </label>
-            <input type="text" />
+            <input type="text" required/>
             <label>Adja meg a nemét: </label>
             <select>
                 <option value="MALE">Férfi</option>

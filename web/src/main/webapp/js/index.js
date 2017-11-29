@@ -35,8 +35,15 @@ function addAllColumnHeaders(myList, selector) {
 }
 
 function searchActor() {
+    console.log("Hello");
+    var urlPath = "";
+    if($("#searchName").val() == ""){
+        urlPath = "actor/get";
+    }else{
+        urlPath = "actor/get/" + $("#searchName").val();
+    }
     $.ajax({
-        url: "actor/get",
+        url: urlPath,
         contentTyp: 'application/json',
         success: function (data, textStatus, xhr) {
             console.log(xhr.status);
@@ -44,13 +51,19 @@ function searchActor() {
             var resultTarget = $('#actorSeachResult')
             resultTarget.html("");
             buildHtmlTable(resultTarget, data);
+        },
+        failure:function () {
+            console.log("fail");
+        },
+        error:function () {
+            console.log("error");
         }
-        
     });
 }
 
 $(document).ready(
     function () {
-        $("#searchButton").click(searchActor);
+        console.log("ready");
+        $("#searchName").on('input', searchActor);
     }
 )
