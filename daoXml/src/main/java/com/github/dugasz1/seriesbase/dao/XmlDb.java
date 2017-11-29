@@ -44,7 +44,7 @@ public class XmlDb {
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 
         //schemaFactory.newSchema(new File(getClass().getClassLoader().getResource("db_schema").getFile()));
-        try {
+        /*try {
             schema = schemaFactory.newSchema(new File("C:\\Users\\Dudu\\IdeaProjects\\SeriesBase\\daoXml\\src\\main\\resources\\db_schema.xsd"));
             Validator validator = schema.newValidator();
             validator.setErrorHandler(new XsdErrorHandler());
@@ -53,7 +53,7 @@ public class XmlDb {
         }
         builderFactory.setSchema(schema);
         builderFactory.setIgnoringElementContentWhitespace(true);
-        builderFactory.setIgnoringComments(true);
+        builderFactory.setIgnoringComments(true);*/
 
 
         DocumentBuilder builder = null;

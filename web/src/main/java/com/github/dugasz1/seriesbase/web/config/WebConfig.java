@@ -14,7 +14,7 @@ public class WebConfig {
 
     @Bean(value = "xmlDb")
     public XmlDb initXmlDb() {
-        return new XmlDb("C:\\Users\\Dudu\\Desktop\\db_test.xml");
+        return new XmlDb(System.getProperty("db_file_path"));
     }
 
     @Bean(value = "actorDAO")
