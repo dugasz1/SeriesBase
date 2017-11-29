@@ -38,13 +38,12 @@ public class WebConfig {
 
     @Bean
     public ActorViewController initActorViewController(){
-        return new ActorViewController();
+        return new ActorViewController(initActorService());
     }
 
     @Bean
     public ViewResolver viewResolver(){
         InternalResourceViewResolver result = new InternalResourceViewResolver();
-        result.setViewClass(JstlView.class);
         result.setPrefix("/WEB-INF/views/");
         result.setSuffix(".jsp");
         return result;

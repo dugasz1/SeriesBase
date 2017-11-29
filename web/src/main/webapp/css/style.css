@@ -116,12 +116,26 @@ tr:nth-child(even){
     padding: 1%;
     height: 4000px;
     background: #1f1f1f;
+    color: white;
 
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px 4px 4px 4px;
     -webkit-border-radius: 4px 4px 4px 4px;
     border: 2px solid #008fff;
 }
+
+@media screen and (max-width : 1224px) {
+    .content{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width : 1024px) {
+    .content{
+        width: 95%;
+    }
+}
+
 
 .hr-line{
     display:block;
