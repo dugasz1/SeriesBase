@@ -6,8 +6,17 @@ function buildHtmlTable(selector, myList) {
         var row$ = $('<tr/>');
         for (var colIndex = 0; colIndex < columns.length; colIndex++) {
             var cellValue = myList[i][columns[colIndex]];
-            if (cellValue == null) cellValue = "";
-            row$.append($('<td/>').html(cellValue));
+            if (cellValue == null) {
+                cellValue = "";
+            }
+            if(colIndex ==1){
+                var linkCell$ = $('</a>');
+                linkCell$.attr('href', "/actor/"+cellValue);
+                linkCell$.text(cellValue)
+                row$.append($('<td/>').html('<a href="/actor/'+cellValue+'">'+cellValue+'</a>'));
+            }else{
+                row$.append($('<td/>').html(cellValue));
+            }
         }
         $(selector).append(row$);
     }

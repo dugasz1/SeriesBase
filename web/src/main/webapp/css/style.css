@@ -82,6 +82,10 @@ tr:nth-child(even){
     background: #0068c7;
 }
 
+td > a {
+    text-decoration: underline;
+}
+
 .menu{
     list-style: none;
     display: block;

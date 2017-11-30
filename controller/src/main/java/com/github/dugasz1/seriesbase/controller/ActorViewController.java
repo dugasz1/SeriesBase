@@ -19,6 +19,10 @@ public class ActorViewController {
     @RequestMapping("actor/{actorName}")
     public ModelAndView actorView(@PathVariable("actorName")String actorName) throws Exception{
         Collection<Actor> actors = actorService.searchActorByName(actorName);
+        if(actors.size() == 0) {
+
+            return new ModelAndView("redirect:/");
+        }
         Actor actor = actors.iterator().next();
 
         ModelAndView modelAndView = new ModelAndView("actor");

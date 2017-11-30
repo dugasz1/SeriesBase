@@ -8,15 +8,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Kezdőlap</title>
+    <title>Színész kezelő</title>
 
-    <%@include file="includes/meta.jsp"%>
+    <%@include file="/includes/meta.jsp"%>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/index.js" ></script>
+    <script src="js/actors.js" ></script>
 </head>
 <body>
-<%@include file="includes/menu.jsp"%>
+<%@include file="/includes/menu.jsp"%>
 <div class="content">
     <form id="searchForm">
         <label>Adja meg a színész nevét: </label>

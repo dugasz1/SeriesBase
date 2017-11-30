@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css" />">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="<c:url value="/js/index.js" />" ></script>
+    <script src="<c:url value="/js/actors.js" />" ></script>
 </head>
 <body>
 <%@include file="/includes/menu.jsp"%>
