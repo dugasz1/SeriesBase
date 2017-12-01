@@ -18,29 +18,16 @@
 <body>
     <%@include file="includes/menu.jsp"%>
     <div class="content">
-        <form id="searchForm">
-            <label>Adja meg a színész nevét: </label>
-            <input type="text" id="searchName" />
-            <button type="button" id="searchButton">Keresés</button>
-        </form>
-
-        <table id="actorSeachResult" border="1">
-
-        </table>
 
         <span class="hr-line" />
 
-        <form >
-            <label>Adja meg a színész nevét: </label>
-            <input type="text" required/>
-            <label>Adja meg a nemét: </label>
-            <select>
-                <option value="MALE">Férfi</option>
-                <option value="FEMALE">Nő</option>
-                <option value="OTHER">Egyéb</option>
-            </select>
-            <button type="button">Hozzáad</button>
-        </form>
+        <h2>Ez az oldal Bozó Dávid (TMN7C4) beadandója a következő tárgyakra: </h2>
+
+        <ul>
+            <li>Web technológiák 1</li>
+            <li>Web-es alkalmazások (Java)</li>
+            <li>Adatkezelés XML-ben</li>
+        </ul>
 
         <span class="hr-line" />
     </div>

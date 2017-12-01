@@ -36,7 +36,8 @@ public class ActorXmlDAO implements ActorDAO {
 
     public void createActor(Actor actor) throws PersistException {
         Element newActor = document.createElement("Actor");
-        newActor.setAttribute("id", String.valueOf(xmlDb.GetNewActorId()));
+        actor.setId(xmlDb.GetNewActorId());
+        newActor.setAttribute("id", String.valueOf(actor.getId()));
         newActor.setAttribute("name", actor.getName());
         newActor.setAttribute("gender", actor.getGender().toString());
 

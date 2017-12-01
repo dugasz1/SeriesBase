@@ -18,10 +18,10 @@
 <body>
 <%@include file="/includes/menu.jsp"%>
 <div class="content">
+    <h1>Színész keresése:</h1>
     <form id="searchForm">
         <label>Adja meg a színész nevét: </label>
         <input type="text" id="searchName" />
-        <button type="button" id="searchButton">Keresés</button>
     </form>
 
     <table id="actorSeachResult" border="1">
@@ -30,17 +30,22 @@
 
     <span class="hr-line" />
 
-    <form >
+    <h1>Színész hozzáadása:</h1>
+    <form id="addForm">
         <label>Adja meg a színész nevét: </label>
-        <input type="text" required/>
+        <input type="text" id="actorName" required/>
         <label>Adja meg a nemét: </label>
-        <select>
+        <select id="actorGender">
             <option value="MALE">Férfi</option>
             <option value="FEMALE">Nő</option>
             <option value="OTHER">Egyéb</option>
         </select>
-        <button type="button">Hozzáad</button>
+        <button type="submit">Hozzáad</button>
     </form>
+
+    <div id="addResult" style="color: red;">
+
+    </div>
 
     <span class="hr-line" />
 </div>

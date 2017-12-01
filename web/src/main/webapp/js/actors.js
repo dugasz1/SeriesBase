@@ -53,7 +53,7 @@ function searchActor() {
     }
     $.ajax({
         url: urlPath,
-        contentTyp: 'application/json',
+        contentType: 'application/json',
         success: function (data, textStatus, xhr) {
             console.log(xhr.status);
             console.log(data);
@@ -70,9 +70,39 @@ function searchActor() {
     });
 }
 
+function addActor(e) {
+    console.log('addActor');
+    var resultTarget = $('#addResult');
+    resultTarget.html("");
+
+    var data = {
+        id:-1,
+        name:$('#actorName').val(),
+        gender:$('#actorGender').val()
+    }
+
+    $.ajax({
+        url: '/actor/add/',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        beforeSend: function () {
+            resultTarget.html("<i class=\"fa fa-gear fa-spin\" style=\"font-size:24px\"></i>");
+        },
+        success: function (data, textStatus, xhr) {
+            resultTarget.text(data.name + " added to the db with id: " + data.id);
+        },
+        error:function (xhr, textStatus, errorThrown) {
+            resultTarget.text(xhr.responseText);
+        }
+    });
+    e.preventDefault();
+}
+
 $(document).ready(
     function () {
         console.log("ready");
         $("#searchName").on('input', searchActor);
+        $("#addForm").on('submit', addActor);
     }
 )

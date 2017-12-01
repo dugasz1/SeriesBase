@@ -36,7 +36,7 @@ public class ActorController {
         return actorService.searchActorByName(actorName);
     }
 
-    @RequestMapping(value = "/add/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/add", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Actor addActor(@RequestBody Actor actor) throws StorageErrorException, ActorExistException {
         //Actor actor = new Actor(10, actorName, Gender.FEMALE);
@@ -45,7 +45,7 @@ public class ActorController {
         return actor;
     }
 
-    @ExceptionHandler(value = {StorageErrorException.class, ActorExistException.class, org.springframework.http.converter.HttpMessageConversionException.class})
+    @ExceptionHandler(value = {StorageErrorException.class, ActorExistException.class})
     @ResponseBody
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public String addActorExceptionHandler(Exception e){
