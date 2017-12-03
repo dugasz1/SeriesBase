@@ -33,14 +33,12 @@
 
     <h1>Sorozat hozzáadása:</h1>
     <form id="addForm">
-        <label>Adja meg a színész nevét: </label>
-        <input type="text" id="actorName" required/>
-        <label>Adja meg a nemét: </label>
-        <select id="actorGender">
-            <option value="MALE">Férfi</option>
-            <option value="FEMALE">Nő</option>
-            <option value="OTHER">Egyéb</option>
-        </select>
+        <label>Adja meg a sorozat címét: </label>
+        <input type="text" id="seriesTitle" required/>
+        <label>Adja meg az érékelést (0-10): </label>
+        <input type="number" id="seriesRating" required/>
+        <label>Adja megy egy rész átlagos hosszát:</label>
+        <input type="number" id="seriesDuration" required/>
         <button type="submit">Hozzáad</button>
     </form>
 

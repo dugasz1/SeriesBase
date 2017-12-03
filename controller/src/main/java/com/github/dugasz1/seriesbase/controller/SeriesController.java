@@ -2,12 +2,12 @@ package com.github.dugasz1.seriesbase.controller;
 
 import com.github.dugasz1.seriesbase.core.model.Series;
 import com.github.dugasz1.seriesbase.core.services.SeriesService;
+import com.github.dugasz1.seriesbase.core.services.exceptions.ActorExistException;
+import com.github.dugasz1.seriesbase.core.services.exceptions.SeriesExistException;
 import com.github.dugasz1.seriesbase.core.services.exceptions.StorageErrorException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -32,5 +32,18 @@ public class SeriesController {
         return seriesService.listSeries();
     }
 
+    @RequestMapping(value = "/add/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Series addSeries(@RequestBody Series series) throws StorageErrorException, SeriesExistException {
+        seriesService.recordSeries(series);
 
+        return series;
+    }
+
+    @ExceptionHandler(value = {StorageErrorException.class, SeriesExistException.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public String addActorExceptionHandler(Exception e){
+        return e.getMessage();
+    }
 }

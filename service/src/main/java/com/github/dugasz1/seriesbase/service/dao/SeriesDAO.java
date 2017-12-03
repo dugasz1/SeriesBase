@@ -7,7 +7,7 @@ import com.github.dugasz1.seriesbase.service.dao.exceptions.SeriesIdNotExistExce
 import java.util.Collection;
 
 public interface SeriesDAO {
-    void createSeries(Series series) throws PersistException;
+    Series createSeries(Series series) throws PersistException;
 
     Collection<Series> readSeries() throws PersistException;
 

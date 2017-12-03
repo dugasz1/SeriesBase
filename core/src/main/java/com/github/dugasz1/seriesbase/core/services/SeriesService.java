@@ -24,5 +24,5 @@ public interface SeriesService {
      * @param series
      * @throws SeriesExistException if there is a series with exactly the same name
      */
-    void recordSeries(Series series) throws SeriesExistException;
+    Series recordSeries(Series series) throws SeriesExistException, StorageErrorException;
 }

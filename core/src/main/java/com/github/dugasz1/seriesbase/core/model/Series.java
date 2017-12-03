@@ -1,5 +1,7 @@
 package com.github.dugasz1.seriesbase.core.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dugasz1.seriesbase.core.model.exceptions.InvalidRatingException;
 
 import java.util.Collection;
@@ -11,7 +13,8 @@ public class Series {
     private int rating;
     private int duration;
 
-    public Series(int id, String title, Collection<Season> seasons, int rating, int duration) throws InvalidRatingException {
+    @JsonCreator(mode = JsonCreator.Mode.DEFAULT)
+    public Series(@JsonProperty("id") int id, @JsonProperty("title") String title, @JsonProperty("seasons") Collection<Season> seasons, @JsonProperty("rating") int rating, @JsonProperty("duration") int duration) throws InvalidRatingException {
         setId(id);
         setTitle(title);
         setSeasons(seasons);

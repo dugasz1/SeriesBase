@@ -55,7 +55,17 @@ public class SeriesServiceImpl implements SeriesService {
         return result;
     }
 
-    public void recordSeries(Series series) throws SeriesExistException {
-
+    public Series recordSeries(Series series) throws SeriesExistException, StorageErrorException {
+        Collection<Series> serieses = listSeries();
+        for (Series currSeries:serieses) {
+            if(currSeries.getTitle().toLowerCase().equals(series.getTitle().toLowerCase())){
+                throw new SeriesExistException(series.getTitle() + " is alredy exist.");
+            }
+        }
+        try {
+            return seriesDAO.createSeries(series);
+        } catch (PersistException e) {
+            throw new StorageErrorException(e);
+        }
     }
 }
