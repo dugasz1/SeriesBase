@@ -8,19 +8,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Színész kezelő</title>
+    <title>Sorozat kezelő</title>
 
     <%@include file="/includes/meta.jsp"%>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/actors.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+    <script src="js/series.js" ></script>
 </head>
 <body>
 <%@include file="/includes/menu.jsp"%>
 <div class="content">
     <h1>Sorozat keresése:</h1>
     <form id="searchForm">
-        <label>Adja meg a színész nevét: </label>
+        <label>Adja meg a sorozat nevét: </label>
         <input type="text" id="searchTitle" />
     </form>
 
@@ -30,7 +31,7 @@
 
     <span class="hr-line" />
 
-    <h1>Színész hozzáadása:</h1>
+    <h1>Sorozat hozzáadása:</h1>
     <form id="addForm">
         <label>Adja meg a színész nevét: </label>
         <input type="text" id="actorName" required/>

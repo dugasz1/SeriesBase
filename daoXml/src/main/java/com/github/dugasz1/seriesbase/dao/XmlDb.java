@@ -5,6 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
+import sun.nio.cs.StandardCharsets;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
@@ -19,9 +20,9 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 public class XmlDb {
     private File dbFile;
@@ -91,11 +92,11 @@ public class XmlDb {
 
     public void Save() throws UnableToSaveException {
         DOMSource source = new DOMSource(document);
-        FileWriter writer = null;
+        OutputStreamWriter stream = null;
         try {
-            writer = new FileWriter(dbFile);
+        stream = new OutputStreamWriter(new FileOutputStream(dbFile), UTF_8);
 
-        StreamResult result = new StreamResult(writer);
+        StreamResult result = new StreamResult(stream);
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();

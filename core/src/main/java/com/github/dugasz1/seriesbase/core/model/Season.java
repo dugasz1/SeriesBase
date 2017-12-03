@@ -7,7 +7,7 @@ public class Season {
     private int id;
     private Collection<Episode> episodes;
 
-    public Season(int id, Series parentSeries, Collection<Episode> episodes) {
+    public Season(int id, Collection<Episode> episodes) {
         setId(id);
 
         setEpisodes(episodes);

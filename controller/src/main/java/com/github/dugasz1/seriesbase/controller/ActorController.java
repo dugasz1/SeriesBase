@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.util.Collection;
 
-@RequestMapping("/actor")
+@RequestMapping("/api/actor")
 public class ActorController {
     private ActorService actorService;
 

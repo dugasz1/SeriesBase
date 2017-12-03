@@ -7,15 +7,8 @@ import com.github.dugasz1.seriesbase.service.dao.ActorDAO;
 import com.github.dugasz1.seriesbase.service.dao.exceptions.PersistException;
 import org.w3c.dom.*;
 
-import javax.xml.transform.TransformerException;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
 
 public class ActorXmlDAO implements ActorDAO {
     private XmlDb xmlDb;
@@ -69,7 +62,7 @@ public class ActorXmlDAO implements ActorDAO {
         return actors;
     }
 
-    public Actor readActorByName(String name) {
+    public Actor readActorById(int id) {
         return null;
     }
 }

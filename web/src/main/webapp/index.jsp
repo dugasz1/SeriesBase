@@ -22,7 +22,7 @@
         <span class="hr-line" />
 
         <h2>Ez az oldal Bozó Dávid (TMN7C4) beadandója a következő tárgyakra: </h2>
-
+        Tesztelek
         <ul>
             <li>Web technológiák 1</li>
             <li>Web-es alkalmazások (Java)</li>

@@ -9,11 +9,11 @@ function buildHtmlTable(selector, myList) {
             if (cellValue == null) {
                 cellValue = "";
             }
-            if(colIndex ==1){
+            if(colIndex ==0){
                 var linkCell$ = $('</a>');
                 linkCell$.attr('href', "actor/"+cellValue);
                 linkCell$.text(cellValue)
-                row$.append($('<td/>').html('<a href="actor/'+cellValue+'">'+cellValue+'</a>'));
+                row$.append($('<td/>').html('<a href="series/'+cellValue+'">'+cellValue+'</a>'));
             }else{
                 row$.append($('<td/>').html(cellValue));
             }
@@ -33,6 +33,9 @@ function addAllColumnHeaders(myList, selector) {
         var rowHash = myList[i];
         for (var key in rowHash) {
             if ($.inArray(key, columnSet) == -1) {
+                if(key == "seasons"){
+                    continue;
+                }
                 columnSet.push(key);
                 headerTr$.append($('<th/>').html(key));
             }
@@ -44,20 +47,17 @@ function addAllColumnHeaders(myList, selector) {
 }
 
 function searchActor() {
-    console.log("Hello");
     var urlPath = "";
-    if($("#searchName").val() == ""){
-        urlPath = "api/actor/get";
+    if($("#searchTitle").val() == ""){
+        urlPath = "api/series/get";
     }else{
-        urlPath = "api/actor/get/" + $("#searchName").val();
+        urlPath = "api/series/get/" + $("#searchTitle").val();
     }
     $.ajax({
         url: urlPath,
         contentType: 'application/json',
         success: function (data, textStatus, xhr) {
-            console.log(xhr.status);
-            console.log(data);
-            var resultTarget = $('#actorSeachResult')
+            var resultTarget = $('#seriesSearchResult')
             resultTarget.html("");
             buildHtmlTable(resultTarget, data);
         },
@@ -70,39 +70,10 @@ function searchActor() {
     });
 }
 
-function addActor(e) {
-    console.log('addActor');
-    var resultTarget = $('#addResult');
-    resultTarget.html("");
-
-    var data = {
-        id:-1,
-        name:$('#actorName').val(),
-        gender:$('#actorGender').val()
-    }
-
-    $.ajax({
-        url: 'api/actor/add/',
-        method: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(data),
-        beforeSend: function () {
-            resultTarget.html("<i class=\"fa fa-gear fa-spin\" style=\"font-size:24px\"></i>");
-        },
-        success: function (data, textStatus, xhr) {
-            resultTarget.text(data.name + " added to the db with id: " + data.id);
-        },
-        error:function (xhr, textStatus, errorThrown) {
-            resultTarget.text(xhr.responseText);
-        }
-    });
-    e.preventDefault();
-}
-
 $(document).ready(
     function () {
         console.log("ready");
-        $("#searchName").on('input', searchActor);
-        $("#addForm").on('submit', addActor);
+        $("#searchTitle").on('input', searchActor);
+        //$("#addForm").on('submit', addActor);
     }
 )

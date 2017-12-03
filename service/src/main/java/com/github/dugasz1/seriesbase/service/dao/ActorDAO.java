@@ -13,5 +13,5 @@ public interface ActorDAO {
 
     Collection<Actor> readActors();
 
-    Actor readActorByName(String name);
+    Actor readActorById(int id);
 }
