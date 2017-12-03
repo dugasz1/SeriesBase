@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Dudu
   Date: 2017. 12. 03.
-  Time: 16:33
+  Time: 20:51
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 
 <html>
 <head>
-    <title>${series.title}</title>
+    <title>${series.title} | ${season.id}. évad | ${episode.id}</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css" />">
@@ -20,24 +20,29 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css" />">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="<c:url value="/js/actors.js" />" ></script>
+    <script>
+        var airTimeStamp = ${episode.airTime.getTime()};
+    </script>
+    <script src="<c:url value="/js/episode.js"/> "></script>
 </head>
 <body>
 <%@include file="/includes/menu.jsp"%>
 
 <div class="content">
-    <b>Cím: ${series.title}</b> </br>
-    <b>Játék idő: ${series.duration}</b> </br>
-    <b>Értékelés: ${series.rating}</b> </br>
+    <b><h1>${series.title}</h1></b> </br>
+    <b>${season.id}. évad</b> </br>
+    <b>${episode.id}. epizód | ${episode.title}</b> </br></br>
 
-    <h3>Évadok:</h3>
+    Adás: <span id="airTime"></span>
+
+    <h3>Színészek:</h3>
     <table>
         <tr>
-            <th>id</th>
+            <th>Név</th>
         </tr>
-        <c:forEach items="${series.seasons}" var="season">
+        <c:forEach items="${episode.actors}" var="actor">
             <tr>
-                <td><a href="<c:url value="/" />series/${series.id}/${season.id}">${season.id}. évad</a> </td>
+                <td><a href="<c:url value="/" />actor/${actor.name}">${actor.name}</a> </td>
             </tr>
         </c:forEach>
     </table>

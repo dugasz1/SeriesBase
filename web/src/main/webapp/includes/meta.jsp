@@ -29,6 +29,6 @@
 <meta name="msapplication-TileImage" content="<c:url value="/img/icon/ms-icon-144x144.png" />">
 <meta name="theme-color" content="#ffffff">
 
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css" /> ">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css" /> ">

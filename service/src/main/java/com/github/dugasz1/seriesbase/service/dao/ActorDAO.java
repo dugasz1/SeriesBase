@@ -1,6 +1,7 @@
 package com.github.dugasz1.seriesbase.service.dao;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
+import com.github.dugasz1.seriesbase.core.services.exceptions.ActorNotExistException;
 import com.github.dugasz1.seriesbase.service.dao.exceptions.PersistException;
 
 import javax.xml.transform.TransformerException;
@@ -13,5 +14,5 @@ public interface ActorDAO {
 
     Collection<Actor> readActors();
 
-    Actor readActorById(int id);
+    Actor readActorById(int id) throws ActorNotExistException;
 }

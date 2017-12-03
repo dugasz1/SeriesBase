@@ -2,6 +2,7 @@ package com.github.dugasz1.seriesbase.dao;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
 import com.github.dugasz1.seriesbase.core.model.Gender;
+import com.github.dugasz1.seriesbase.core.services.exceptions.ActorNotExistException;
 import com.github.dugasz1.seriesbase.dao.exceptions.UnableToSaveException;
 import com.github.dugasz1.seriesbase.service.dao.ActorDAO;
 import com.github.dugasz1.seriesbase.service.dao.exceptions.PersistException;
@@ -62,7 +63,15 @@ public class ActorXmlDAO implements ActorDAO {
         return actors;
     }
 
-    public Actor readActorById(int id) {
-        return null;
+    public Actor readActorById(int id) throws ActorNotExistException {
+        Collection<Actor> actors = readActors();
+
+        for (Actor actor : actors) {
+            if(actor.getId() == id){
+                return actor;
+            }
+        }
+
+        throw new ActorNotExistException("Actor with id " + id + " not exists.");
     }
 }

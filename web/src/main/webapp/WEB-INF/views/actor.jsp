@@ -12,11 +12,7 @@
 <html>
 <head>
     <title>${actor.name}</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/font-awesome.min.css" />">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/style.css" />">
+    <%@include file="/includes/meta.jsp"%>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="<c:url value="/js/actors.js" />" ></script>

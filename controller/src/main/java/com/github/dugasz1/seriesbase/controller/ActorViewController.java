@@ -2,6 +2,9 @@ package com.github.dugasz1.seriesbase.controller;
 
 import com.github.dugasz1.seriesbase.core.model.Actor;
 import com.github.dugasz1.seriesbase.core.services.ActorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

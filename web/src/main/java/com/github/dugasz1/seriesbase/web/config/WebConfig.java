@@ -4,7 +4,10 @@ import com.github.dugasz1.seriesbase.controller.ActorController;
 import com.github.dugasz1.seriesbase.controller.ActorViewController;
 import com.github.dugasz1.seriesbase.controller.SeriesController;
 import com.github.dugasz1.seriesbase.controller.SeriesViewController;
+import com.github.dugasz1.seriesbase.core.model.Season;
 import com.github.dugasz1.seriesbase.core.services.ActorService;
+import com.github.dugasz1.seriesbase.core.services.EpisodeService;
+import com.github.dugasz1.seriesbase.core.services.SeasonService;
 import com.github.dugasz1.seriesbase.core.services.SeriesService;
 import com.github.dugasz1.seriesbase.dao.*;
 import com.github.dugasz1.seriesbase.service.dao.ActorDAO;
@@ -12,6 +15,8 @@ import com.github.dugasz1.seriesbase.service.dao.EpisodeDAO;
 import com.github.dugasz1.seriesbase.service.dao.SeasonDAO;
 import com.github.dugasz1.seriesbase.service.dao.SeriesDAO;
 import com.github.dugasz1.seriesbase.service.impl.ActorServiceImpl;
+import com.github.dugasz1.seriesbase.service.impl.EpisodeServiceImpl;
+import com.github.dugasz1.seriesbase.service.impl.SeasonServiceImpl;
 import com.github.dugasz1.seriesbase.service.impl.SeriesServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,12 +36,12 @@ public class WebConfig {
         return xmlDb;
     }
 
+    // -------- DAOs --------
     @Bean(value = "actorDAO")
     public ActorDAO initActorDAO(){
         return new ActorXmlDAO(initXmlDb());
     }
 
-    // -------- DAOs --------
     @Bean
     public SeriesDAO initSeriesDAO(){
         return new SeriesXmlDAO(initXmlDb(), initSeasonDAO());
@@ -49,7 +54,7 @@ public class WebConfig {
 
     @Bean
     public EpisodeDAO initEpisodeDAO() {
-        return new EpisodeXmlDAO(initXmlDb());
+        return new EpisodeXmlDAO(initXmlDb(), initActorDAO());
     }
 
     // -------- Services --------
@@ -61,6 +66,16 @@ public class WebConfig {
     @Bean
     public SeriesService initSeriesService() {
         return new SeriesServiceImpl(initSeriesDAO());
+    }
+
+    @Bean
+    public SeasonService initSeasonService(){
+        return new SeasonServiceImpl(initSeasonDAO());
+    }
+
+    @Bean
+    public EpisodeService initEpisodeService(){
+        return new EpisodeServiceImpl(initEpisodeDAO());
     }
 
     // -------- Controllers --------
@@ -81,7 +96,7 @@ public class WebConfig {
 
     @Bean
     public SeriesViewController initSeriesViewContorller() {
-        return new SeriesViewController(initSeriesService());
+        return new SeriesViewController(initSeriesService(), initSeasonService(), initEpisodeService());
     }
 
 
