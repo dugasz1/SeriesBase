@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:/home/dudu/db_schema.xsd">
+    <Meta>
+        <ActorAI>16</ActorAI>
+        <SeriesAI>4</SeriesAI>
+    </Meta>
+    <Actors>
+        <Actor gender="FEMALE" id="1" name="Jennifer Aniston"/>
+        <Actor gender="FEMALE" id="2" name="Courteney Cox"/>
+        <Actor gender="FEMALE" id="3" name="Lisa Kudrow"/>
+        <Actor gender="MALE" id="4" name="Matt LeBlanc"/>
+        <Actor gender="MALE" id="5" name="Matthew Perry"/>
+        <Actor gender="MALE" id="6" name="David Schwimmer"/>
+        
+        <Actor gender="MALE" id="7" name="Johnny Galecki"/>
+        <Actor gender="MALE" id="8" name="Jim Parsons"/>
+        <Actor gender="FEMALE" id="9" name="Kaley Cuoco"/>
+        <Actor gender="MALE" id="10" name="Simon Helberg"/>
+        <Actor gender="MALE" id="11" name="Kunal Nayyar"/>
+        <Actor gender="FEMALE" id="12" name="Melissa Rauch"/>
+        <Actor gender="FEMALE" id="13" name="Mayim Bialik"/>
+        <Actor gender="FEMALE" id="14" name="Maisie Williams"/>
+        <Actor gender="OTHER" id="15" name="Horváth Domonkos"/>
+    <Actor gender="MALE" id="11" name="Mark Wahlberg"/><Actor gender="MALE" id="12" name="Matt Damon"/><Actor gender="MALE" id="13" name="Eminem"/><Actor gender="MALE" id="14" name="Jonah Hill"/><Actor gender="MALE" id="15" name="Christian Bale"/><Actor gender="MALE" id="16" name="Brad Pitt"/></Actors>
+    <Serieses>
+        <Series duration="22" id="1" rating="9" title="Friends">
+            <Season id="1">
+                <Episode airTime="1994-09-22T19:00:00" duration="22" id="1" title="The One Where Monica Gets a Roommate">
+                    <ActorRefKey refKey="1"/>
+                    <ActorRefKey refKey="2"/>
+                    <ActorRefKey refKey="3"/>
+                    <ActorRefKey refKey="4"/>
+                    <ActorRefKey refKey="5"/>
+                    <ActorRefKey refKey="6"/>
+                </Episode>
+                <Episode airTime="1994-09-29T19:00:00" duration="23" id="2" title="The One with the Sonogram at the End">
+                    <ActorRefKey refKey="1"/>
+                    <ActorRefKey refKey="2"/>
+                    <ActorRefKey refKey="3"/>
+                    <ActorRefKey refKey="4"/>
+                    <ActorRefKey refKey="5"/>
+                    <ActorRefKey refKey="6"/>
+                </Episode>
+                <Episode airTime="1994-10-06T19:00:00" duration="21" id="3" title="The One with the Thumb">
+                    <ActorRefKey refKey="1"/>
+                    <ActorRefKey refKey="2"/>
+                    <ActorRefKey refKey="3"/>
+                    <ActorRefKey refKey="4"/>
+                    <ActorRefKey refKey="5"/>
+                    <ActorRefKey refKey="6"/>
+                </Episode>
+            </Season>
+        </Series>
+        
+        <Series duration="22" id="2" rating="8" title="The Big Bang Theory">
+            <Season id="1">
+                <Episode airTime="2009-12-27T21:00:00" duration="22" id="1" title="Pilot">
+                    <ActorRefKey refKey="7"/>
+                    <ActorRefKey refKey="8"/>
+                    <ActorRefKey refKey="9"/>
+                    <ActorRefKey refKey="10"/>
+                    <ActorRefKey refKey="11"/>
+                    <ActorRefKey refKey="12"/>
+                    <ActorRefKey refKey="13"/>
+                </Episode>
+                <Episode airTime="2010-01-03T21:00:00" duration="23" id="2" title="The Big Bran Hypothesis"/>
+                <Episode airTime="2010-01-09T21:00:00" duration="21" id="3" title="The Fuzzy Boots Corollary"/>
+            </Season>
+            <Season id="2">
+                <Episode airTime="2010-03-27T21:00:00" duration="21" id="1" title="The Bad Fish Paradigm"/>
+            </Season>
+        </Series>
+        <Series duration="50" id="3" rating="10" title="Vörösmarty krónikák">
+            <Season id="1">
+                <Episode airTime="2017-10-22T00:00:00" duration="51" id="1" title="Az első glockom">
+                    <ActorRefKey refKey="15"/>
+                </Episode>
+            </Season>
+        </Series>
+    <Series duration="30" id="4" rating="9" title="Stranger things"/></Serieses>
+</Root>
