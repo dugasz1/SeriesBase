@@ -1,0 +1,28 @@
+<h1>Sorozat keresése:</h1>
+<form id="seriesSearchForm">
+    <label>Adja meg a sorozat nevét: </label>
+    <input type="text" id="searchTitle" />
+</form>
+
+<table id="seriesSearchResult" border="1">
+
+</table>
+
+<span class="hr-line" />
+
+<h1>Sorozat hozzáadása:</h1>
+<form id="seriesAddForm">
+    <label>Adja meg a sorozat címét: </label>
+    <input type="text" id="seriesTitle" required/>
+    <label>Adja meg az érékelést (0-10): </label>
+    <input type="number" id="seriesRating" required/>
+    <label>Adja megy egy rész átlagos hosszát:</label>
+    <input type="number" id="seriesDuration" required/>
+    <button type="submit">Hozzáad</button>
+</form>
+
+<div id="seriesAddResult" style="color: red;">
+
+</div>
+
+<span class="hr-line" />

@@ -20,7 +20,7 @@
 <%@include file="/includes/menu.jsp"%>
 <div class="content">
     <h1>Sorozat keresése:</h1>
-    <form id="searchForm">
+    <form id="seriesSearchForm">
         <label>Adja meg a sorozat nevét: </label>
         <input type="text" id="searchTitle" />
     </form>
@@ -32,7 +32,7 @@
     <span class="hr-line" />
 
     <h1>Sorozat hozzáadása:</h1>
-    <form id="addForm">
+    <form id="seriesAddForm">
         <label>Adja meg a sorozat címét: </label>
         <input type="text" id="seriesTitle" required/>
         <label>Adja meg az érékelést (0-10): </label>
@@ -42,7 +42,7 @@
         <button type="submit">Hozzáad</button>
     </form>
 
-    <div id="addResult" style="color: red;">
+    <div id="seriesAddResult" style="color: red;">
 
     </div>
 

@@ -99,10 +99,12 @@ function addActor(e) {
     e.preventDefault();
 }
 
+function regActorEventListeners() {
+    console.log("ready");
+    $("#searchName").on('input', searchActor);
+    $("#addForm").on('submit', addActor);
+}
+
 $(document).ready(
-    function () {
-        console.log("ready");
-        $("#searchName").on('input', searchActor);
-        $("#addForm").on('submit', addActor);
-    }
+    regActorEventListeners
 )

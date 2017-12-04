@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav>
     <ul class="menu">
-        <li><a href="<c:url value="/index.jsp"/> "><span><i class="fa fa-home" aria-hidden="true">&nbsp; Kezdőlap</i></span></a></li>
+        <li><a href="<c:url value="/indexOld.jsp"/> "><span><i class="fa fa-home" aria-hidden="true">&nbsp; Kezdőlap</i></span></a></li>
         <li><a href="<c:url value="/actors.jsp"/> "><span><i class="fa fa-address-book" aria-hidden="true">&nbsp; Színészek</i></span></a></li>
         <li><a href="<c:url value="/serieses.jsp"/> "><span><i class="fa fa-film" aria-hidden="true">&nbsp; Sorozatok</i></span></a></li>
     </ul>

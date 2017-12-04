@@ -1,6 +1,6 @@
 // Builds the HTML Table out of myList.
-function buildHtmlTable(selector, myList) {
-    var columns = addAllColumnHeaders(myList, selector);
+function buildHtmlTableSeries(selector, myList) {
+    var columns = addAllColumnHeadersSeries(myList, selector);
 
     for (var i = 0; i < myList.length; i++) {
         var row$ = $('<tr/>');
@@ -25,7 +25,7 @@ function buildHtmlTable(selector, myList) {
 // Adds a header row to the table and returns the set of columns.
 // Need to do union of keys from all records as some records may not contain
 // all records.
-function addAllColumnHeaders(myList, selector) {
+function addAllColumnHeadersSeries(myList, selector) {
     var columnSet = [];
     var headerTr$ = $('<tr/>');
 
@@ -59,7 +59,7 @@ function searchSeries() {
         success: function (data, textStatus, xhr) {
             var resultTarget = $('#seriesSearchResult')
             resultTarget.html("");
-            buildHtmlTable(resultTarget, data);
+            buildHtmlTableSeries(resultTarget, data);
         },
         failure:function () {
             console.log("fail");
@@ -73,7 +73,7 @@ function searchSeries() {
 function addSeries(e) {
     console.log('addSeries');
     e.preventDefault();
-    var resultTarget = $('#addResult');
+    var resultTarget = $('#seriesAddResult');
     resultTarget.html("");
 
     var rating = parseInt($('#seriesRating').val());
@@ -108,10 +108,14 @@ function addSeries(e) {
 
 }
 
+function regSeriesListeners() {
+    $("#seriesSearchForm").on('input', searchSeries);
+    $("#seriesAddForm").on('submit', addSeries);
+
+}
+
 $(document).ready(
     function () {
-        console.log("ready");
-        $("#searchTitle").on('input', searchSeries);
-        $("#addForm").on('submit', addSeries);
+        regSeriesListeners();
     }
 )

@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file="/includes/menu.jsp"%>
-<div class="content">
+<div class="content" >
     <h1>Színész keresése:</h1>
     <form id="searchForm">
         <label>Adja meg a színész nevét: </label>
